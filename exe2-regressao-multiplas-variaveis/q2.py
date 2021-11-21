@@ -68,10 +68,6 @@ def execute(alpha):
         theta = gradient_descendent(X, y, theta, alpha)
         cost_array.append(cost_function(X, y, theta))
 
-    # plt.plot(cost_array[0:len(cost_array)], color='blue', linewidth=1)
-    # plt.xlabel("iteracoes")
-    # plt.ylabel("custo")
-    # plt.show()
     return cost_array[0:len(cost_array)]
 
 

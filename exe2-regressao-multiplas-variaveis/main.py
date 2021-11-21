@@ -26,10 +26,9 @@ def gradient_descendent(X, y, theta, alpha):
     return theta
 
 
-columns = ['population', 'profit']
+columns_names = ['population', 'profit']
 df_city_profit = pd.read_csv(
-    "./data1.txt", sep=",", header=None, names=columns)
-print(df_city_profit)
+    "./data1.txt", sep=",", header=None, names=columns_names)
 
 m = len(df_city_profit['profit'])
 theta0 = random.randint(1, 25)
@@ -52,7 +51,8 @@ plt.xlabel("iteracoes")
 plt.ylabel("custo")
 plt.show()
 
-df_city_profit.plot.scatter(x="population", y="profit")
+df_city_profit.plot.scatter(x="population", y="profit", label="training data")
 plt.plot(X[:, [1]], np.sum(np.multiply(X, theta), axis=1),
-         color='red', linewidth=1)
+         color='red', linewidth=1, label="linear regression")
+plt.legend()
 plt.show()
