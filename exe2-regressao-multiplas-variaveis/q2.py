@@ -4,7 +4,11 @@ import numpy as np
 import random
 
 num_iterations = 2000
-
+y = []
+hypothesis_array = []
+theta = []
+m = 0
+cost_array = []
 
 def normalization_of_x(x, average, standard_deviation):
     return (x-average)/standard_deviation
@@ -49,6 +53,7 @@ def gradient_descendent(X, y, theta, alpha):
 
 
 def execute(alpha):
+    global theta, hypothesis_array, y, m, cost_array
     m = len(normalized_df['price'])
     theta0 = random.randint(1, 25)
     theta1 = random.randint(1, 25)
@@ -68,7 +73,7 @@ def execute(alpha):
         theta = gradient_descendent(X, y, theta, alpha)
         cost_array.append(cost_function(X, y, theta))
 
-    return cost_array[0:len(cost_array)]
+    return cost_array
 
 
 columns = ['size', 'bedrooms', 'price']
@@ -92,6 +97,8 @@ plt.ylabel("custo")
 plt.legend()
 plt.show()
 
+print(theta)
+print(cost_array[m])
 # -----------------------------------------------------------
 
 # 2.3 -> Não é possivel traçar o ajuste linear, pois agora temos multiplas dimensões
